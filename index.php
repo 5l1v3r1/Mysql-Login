@@ -15,14 +15,13 @@
   <style>
   body
   {
-    font-family: montserrat;
     background-color: #5cdb95 !important;
   }
   .form
   {
-    width: 310px;
+    width: 300px;
     background: #f1f1f1;
-    height: 310px;
+    height: 290px;
     border-radius: 10px;
     position: absolute;
     left: 50%;
@@ -33,18 +32,35 @@
   {
     text-align: center;
   }
+  .param
+  {
+    display: table;
+    margin: 0 auto;
+    padding-bottom: 20px;
+  }
+  .sbmt
+  {
+    display: table;
+    margin: 0 auto;
+    padding-top: 5px;
+  }
+  .heading
+  {
+    padding-top: 30px;
+    padding-bottom: 20px;
+  }
   </style>
 </head>
 
 <body>
 
   <div class="form">
-  <pre><form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-    <h2>Login</h2>
-      <input type="text" name="username" placeholder="Username" class="btn btn-light"></br>
-      <input type="text" name="password" placeholder="Password" class="btn btn-light"></br>
-      <input type="submit" class="btn btn-success">
-  </form></pre>
+  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+      <div class="heading"><h2>Login</h2></div>
+      <div class="param"><input type="text" name="username" placeholder="Username" class="btn btn-light"></div>
+      <div class="param"><input type="text" name="password" placeholder="Password" class="btn btn-light"></div>
+      <div class="sbmt"><input type="submit" class="btn btn-success"></div>
+  </form>
   </div>
 
 </body>
