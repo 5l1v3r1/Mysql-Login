@@ -31,6 +31,7 @@
   .form h2
   {
     text-align: center;
+    font-weight: 500;
   }
   .param
   {
