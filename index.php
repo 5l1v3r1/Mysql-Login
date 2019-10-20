@@ -59,7 +59,7 @@
   <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
       <div class="heading"><h2>Login</h2></div>
       <div class="param"><input type="text" name="username" placeholder="Username" class="btn btn-light"></div>
-      <div class="param"><input type="text" name="password" placeholder="Password" class="btn btn-light"></div>
+      <div class="param"><input type="password" name="password" placeholder="Password" class="btn btn-light"></div>
       <div class="sbmt"><input type="submit" class="btn btn-success"></div>
   </form>
 
@@ -71,7 +71,7 @@
 
   if ($ousername == $username && $opassword == $password)
   {
-    echo "<script>window.open('home.php', '_blank');</script>";
+    echo "<script>window.open('home.php');</script>";
   }
 
   ?>
