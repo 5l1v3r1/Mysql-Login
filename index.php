@@ -69,12 +69,14 @@
   $username = "CyberStark";
   $password = "@TheDawn89";
 
-  if ($ousername == $username && $opassword == $password)
-  {
-    echo "<script>window.open('home.php');</script>";
-  }
+  if($ousername == $username && $opassword == $password){ ?>
 
-  ?>
+    <script type="text/javascript">
+       window.open('home.php', '_self');
+    </script>
+
+  <?  } ?>
+
   </div>
 
 </body>
