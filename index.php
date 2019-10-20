@@ -5,6 +5,7 @@
   <meta name="description" content="PHP-MySQL Login">
   <meta name="author" content="Choudhary Abdullah">
   <meta name="keywords" content="Cyberstark Corporation">
+  <meta name="theme-color" content="#202029">
   <meta name="viewport" content="width=device-width, initial scale=1.0">
   <title>PHP-MySQL Login</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -14,7 +15,6 @@
   <style>
   body
   {
-    min-height: 100vh;
     font-family: montserrat;
     background-color: #5cdb95 !important;
   }
