@@ -62,6 +62,19 @@
       <div class="param"><input type="text" name="password" placeholder="Password" class="btn btn-light"></div>
       <div class="sbmt"><input type="submit" class="btn btn-success"></div>
   </form>
+
+  <?php
+  $ousername = $_POST["username"];
+  $opassword = $_POST["password"];
+  $username = "CyberStark";
+  $password = "@TheDawn89";
+
+  if ($ousername == $username && $opassword == $password)
+  {
+    echo "<script>window.open('home.php', '_blank');</script>";
+  }
+
+  ?>
   </div>
 
 </body>
