@@ -1,26 +1,33 @@
 <?php
-require_once "database.php";
 session_start();
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
 {
   header("location: index.php");
   exit;
 }
+require_once "database.php";
 $username = $password = "";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
-  $id = $_SESSION["id"];
   $username = mysqli_real_escape_string($conn, trim($_POST["username"]));
   $password = md5(mysqli_real_escape_string($conn, trim($_POST["password"])));
-  $query = "UPDATE users SET password = '$password' WHERE id = '$id'";
+  $query = "SELECT id FROM users WHERE username = '$username'";
   $result = mysqli_query($conn, $query);
-  if (!$result) die("Fatal Error");
-  else
+  $row = $result->fetch_assoc();
+  $id = $row["id"];
+  if ($username == $_SESSION["username"])
   {
-    session_destroy();
-    header("location: index.php");
-    exit();
-  } mysqli_close($conn);
+    $query = "UPDATE users SET password = '$password' WHERE id = '$id'";
+    $result = mysqli_query($conn, $query);
+    if (!$result) die("Fatal Error");
+    else
+    {
+      session_destroy();
+      header("location: index.php");
+      exit();
+    }
+  }
+   mysqli_close($conn);
 }
 ?>
 

@@ -11,7 +11,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   {
     $username = mysqli_real_escape_string($conn, trim($_POST["username"]));
     $password = md5(mysqli_real_escape_string($conn, trim($_POST["password"])));
-    echo $password;
     $query = "SELECT id FROM users WHERE username = '$username' and password = '$password'";
     $result = mysqli_query($conn, $query);
     $row = $result->fetch_assoc();
