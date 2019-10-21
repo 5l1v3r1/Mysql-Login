@@ -1,5 +1,20 @@
 <?php
 require_once "database.php";
+$name = $email = $username = $password = "";
+if($_SERVER["REQUEST_METHOD"] == "POST")
+{
+  $name = mysqli_real_escape_string($conn, trim($_POST["name"]));
+  $email = mysqli_real_escape_string($conn, trim($_POST["email"]));
+  $username = mysqli_real_escape_string($conn, trim($_POST["username"]));
+  $password = md5(mysqli_real_escape_string($conn, $_POST["password"]));
+  $query = "INSERT INTO users (name, email, username, password) VALUES ('$name', '$email', '$username', '$password')";
+  $result = mysqli_query($conn, $query);
+  if (!$result) die("Fatal Error");
+  else
+  {
+    header("Location: index.php");
+  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +32,6 @@ require_once "database.php";
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
-
 <body>
   <div class="form">
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
@@ -28,20 +42,5 @@ require_once "database.php";
       <div class="param"><input type="password" name="password" placeholder="Password" class="btn btn-light"></div>
       <div class="sbmt"><input type="submit" class="btn btn-success"></div>
     </form>
-
-  <?php
-  if($_SERVER["REQUEST_METHOD"] == "POST")
-  {
-    $name = mysqli_real_escape_string($conn, $_POST['name']);
-    $email  = mysqli_real_escape_string($conn, $_POST['email']);
-    $username = mysqli_real_escape_string($conn, $_POST["username"]);
-    $password = mysqli_real_escape_string($conn, $_POST["password"]);
-    $query = "INSERT INTO users (name, email, username, password) VALUES ('$name', '$email', '$username', '$password')";
-    $result = mysqli_query($conn, $query);
-    if (!$result) die("Fatal Error");
-    else
-    {
-      header("Location: index.php");
-    }
-  }
-  ?>
+</body>
+</html>

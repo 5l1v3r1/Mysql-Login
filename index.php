@@ -1,5 +1,19 @@
 <?php
 require_once "database.php";
+$username = $password = "";
+if($_SERVER["REQUEST_METHOD"] == "POST")
+  {
+    $username = mysqli_real_escape_string($conn, trim($_POST["username"]));
+    $password = md5(mysqli_real_escape_string($conn, $_POST["password"]));
+    $query = "SELECT id FROM users WHERE username = '$username' and password = '$password'";
+    $result = mysqli_query($conn, $query);
+    $row = $result->fetch_assoc();
+    if (!$result) die("Fatal Error");
+    else if (is_numeric($row["id"]))
+    {
+      header("Location: home.php");
+    }
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,9 +31,7 @@ require_once "database.php";
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
-
 <body>
-
   <div class="form">
   <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
       <div class="heading"><h2>Login</h2></div>
@@ -28,22 +40,5 @@ require_once "database.php";
       <div class="sbmt"><input type="submit" class="btn btn-success"></div>
   </form>
   </div>
-
-  <?php
-  if($_SERVER["REQUEST_METHOD"] == "POST")
-  {
-    $username = mysqli_real_escape_string($conn, $_POST["username"]);
-    $password = mysqli_real_escape_string($conn, $_POST["password"]);
-    $query = "SELECT id FROM users WHERE username = '$username' and password = '$password'";
-    $result = mysqli_query($conn, $query);
-    $row = $result->fetch_assoc();
-    if (!$result) die("Fatal Error");
-    else if (is_numeric($row["id"]))
-    {
-      header("Location: home.php");
-    }
-  } 
-  ?>
-
 </body>
 </html>
