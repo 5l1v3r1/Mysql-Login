@@ -1,3 +1,6 @@
+<?php
+require_once "database.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,51 +9,13 @@
   <meta name="author" content="Choudhary Abdullah">
   <meta name="keywords" content="Cyberstark Corporation">
   <meta name="theme-color" content="#fff">
-  <meta name="viewport" content="width=device-width, initial scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PHP-MySQL Login</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <style>
-  body
-  {
-    background-color: #5cdb95 !important;
-  }
-  .form
-  {
-    width: 300px;
-    background: #f1f1f1;
-    height: 290px;
-    border-radius: 10px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .form h2
-  {
-    text-align: center;
-    font-weight: 500;
-  }
-  .param
-  {
-    display: table;
-    margin: 0 auto;
-    padding-bottom: 20px;
-  }
-  .sbmt
-  {
-    display: table;
-    margin: 0 auto;
-    padding-top: 5px;
-  }
-  .heading
-  {
-    padding-top: 30px;
-    padding-bottom: 20px;
-  }
-  </style>
 </head>
 
 <body>
@@ -64,18 +29,19 @@
   </form>
 
   <?php
-  $ousername = $_POST["username"];
-  $opassword = $_POST["password"];
-  $username = "CyberStark";
-  $password = "@TheDawn89";
-
-  if($ousername == $username && $opassword == $password){ ?>
-
+  if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $query = "SELECT id FROM users WHERE username = '$username' and password = '$password'";
+    $result = $conn->query($query);
+    $row = $result->fetch_assoc();
+    if (!$result) die("Fatal Error");
+    else if (is_numeric($row["id"]))
+    { ?>
     <script type="text/javascript">
        window.open('home.php', '_self');
     </script>
-
-  <?  } ?>
+  <?php  } } ?>
 
   </div>
 
