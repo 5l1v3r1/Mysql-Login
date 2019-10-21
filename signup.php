@@ -32,16 +32,16 @@ require_once "database.php";
   <?php
   if($_SERVER["REQUEST_METHOD"] == "POST")
   {
-    $name = $_POST["name"];
-    $email  = $_POST["email"];
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $email  = mysqli_real_escape_string($conn, $_POST['email']);
+    $username = mysqli_real_escape_string($conn, $_POST["username"]);
+    $password = mysqli_real_escape_string($conn, $_POST["password"]);
     $query = "INSERT INTO users (name, email, username, password) VALUES ('$name', '$email', '$username', '$password')";
-    $result = $conn->query($query);
+    $result = mysqli_query($conn, $query);
     if (!$result) die("Fatal Error");
     else
-    { ?>
-    <script type="text/javascript">
-       window.open('index.php', '_self');
-    </script>
-    <?php } } ?>
+    {
+      header("Location: index.php");
+    }
+  }
+  ?>

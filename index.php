@@ -32,18 +32,18 @@ require_once "database.php";
   <?php
   if($_SERVER["REQUEST_METHOD"] == "POST")
   {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+    $username = mysqli_real_escape_string($conn, $_POST["username"]);
+    $password = mysqli_real_escape_string($conn, $_POST["password"]);
     $query = "SELECT id FROM users WHERE username = '$username' and password = '$password'";
-    $result = $conn->query($query);
+    $result = mysqli_query($conn, $query);
     $row = $result->fetch_assoc();
     if (!$result) die("Fatal Error");
     else if (is_numeric($row["id"]))
-    { ?>
-    <script type="text/javascript">
-       window.open('home.php', '_self');
-    </script>
-  <?php  } } ?>
+    {
+      header("Location: home.php");
+    }
+  } 
+  ?>
 
 </body>
 </html>
