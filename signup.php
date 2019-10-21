@@ -25,7 +25,7 @@ require_once "database.php";
       <div class="param"><input type="text" name="name" placeholder="Name" class="btn btn-light"></div>
       <div class="param"><input type="text" name="email" placeholder="Email" class="btn btn-light"></div>
       <div class="param"><input type="text" name="username" placeholder="Username" class="btn btn-light"></div>
-      <div class="param"><input type="text" name="password" placeholder="Password" class="btn btn-light"></div>
+      <div class="param"><input type="password" name="password" placeholder="Password" class="btn btn-light"></div>
       <div class="sbmt"><input type="submit" class="btn btn-success"></div>
     </form>
 
@@ -39,4 +39,9 @@ require_once "database.php";
     $query = "INSERT INTO users (name, email, username, password) VALUES ('$name', '$email', '$username', '$password')";
     $result = $conn->query($query);
     if (!$result) die("Fatal Error");
-  }
+    else
+    { ?>
+    <script type="text/javascript">
+       window.open('index.php', '_self');
+    </script>
+    <?php } } ?>
