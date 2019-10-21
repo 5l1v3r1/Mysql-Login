@@ -1,18 +1,28 @@
 <?php
+session_start();
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)
+{
+  header("location: home.php");
+  exit;
+}
 require_once "database.php";
 $username = $password = "";
 if($_SERVER["REQUEST_METHOD"] == "POST")
   {
     $username = mysqli_real_escape_string($conn, trim($_POST["username"]));
-    $password = md5(mysqli_real_escape_string($conn, $_POST["password"]));
+    $password = md5(mysqli_real_escape_string($conn, trim($_POST["password"])));
+    echo $password;
     $query = "SELECT id FROM users WHERE username = '$username' and password = '$password'";
     $result = mysqli_query($conn, $query);
     $row = $result->fetch_assoc();
     if (!$result) die("Fatal Error");
     else if (is_numeric($row["id"]))
     {
+      $_SESSION["loggedin"] = true;
+      $_SESSION["id"] = $id;
+      $_SESSION["username"] = $username;
       header("Location: home.php");
-    }
+    } mysqli_close($conn);
   }
 ?>
 

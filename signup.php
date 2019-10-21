@@ -6,14 +6,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   $name = mysqli_real_escape_string($conn, trim($_POST["name"]));
   $email = mysqli_real_escape_string($conn, trim($_POST["email"]));
   $username = mysqli_real_escape_string($conn, trim($_POST["username"]));
-  $password = md5(mysqli_real_escape_string($conn, $_POST["password"]));
+  $password = md5(mysqli_real_escape_string($conn, trim($_POST["password"])));
   $query = "INSERT INTO users (name, email, username, password) VALUES ('$name', '$email', '$username', '$password')";
   $result = mysqli_query($conn, $query);
   if (!$result) die("Fatal Error");
   else
   {
     header("Location: index.php");
-  }
+  } mysqli_close($conn);
 }
 ?>
 
