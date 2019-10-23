@@ -6,7 +6,7 @@ body
 {
   width: 300px;
   background: #f1f1f1;
-  height: 337px;
+  height: 340px;
   border-radius: 10px;
   position: absolute;
   left: 50%;
@@ -28,7 +28,7 @@ body
 {
   display: table;
   margin: 0 auto;
-  padding-top: 5px;
+  padding-top: 8px;
 }
 .heading
 {
