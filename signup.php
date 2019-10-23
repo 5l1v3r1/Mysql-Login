@@ -33,13 +33,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 </head>
 <body>
   <div class="form">
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+    <form action="#" id="myForm" method="post">
       <div class="heading"><h2>Sign Up</h2></div>
       <div class="param"><input id="name1" type="text" name="name" autocomplete="off" onblur="validate('name', this.value)" placeholder="Name" class="btn btn-light"><span id='name'></span></div>
       <div class="param"><input id="email1" type="text" name="email" autocomplete="off" onblur="validate('email', this.value)" placeholder="Email" class="btn btn-light"><span id='email'></span></div>
       <div class="param"><input id="username1" type="text" name="username" autocomplete="off" onblur="validate('username', this.value)" placeholder="Username" class="btn btn-light"><span id='username'></span></div>
       <div class="param"><input id="password1" type="password" name="password" autocomplete="off" onblur="validate('password', this.value)" placeholder="Password" class="btn btn-light"><span id='password'></span></div>
-      <div class="sbmt"><input onclick="checkForm()" type="submit" class="btn btn-success"></div>
+      <div class="sbmt"><input onclick="checkForm()" type='button' value='Submit' class="btn btn-success"></div>
     </form>
 </body>
 </html>
