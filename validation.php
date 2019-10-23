@@ -10,7 +10,13 @@ echo "\u{274C}";
 }
 // Check Valid or Invalid email when user enters email in email input field.
 if ($formfield == "email") {
+$query = "SELECT id FROM users WHERE email = '$value'";
+$result = mysqli_query($conn, $query);
+$row = $result->fetch_assoc();
 if (strlen($value) > 0 && !preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $value)) {
+echo "\u{274C}";
+}
+else if (is_numeric($row["id"])) {
 echo "\u{274C}";
 }
 }
