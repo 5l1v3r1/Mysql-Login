@@ -14,7 +14,7 @@ var email1 = document.getElementById("email");
 var username1 = document.getElementById("username");
 var password1 = document.getElementById("password");
 //Check All Values/Informations Filled by User are Valid Or Not.If All Fields Are invalid Then Generate alert.
-if (name1.innerHTML == '\u{274C}' || email1.innerHTML == '\u{274C}' || username1.innerHTML == 'x' || password1.innerHTML == '\u{274C}') {
+if (name1.innerHTML == '\u{274C}' || email1.innerHTML == '\u{274C}' || username1.innerHTML == '\u{274C}' || password1.innerHTML == '\u{274C}') {
 alert("Fill Valid Information");
 } else {
 //Submit Form When All values are valid.
