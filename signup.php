@@ -30,6 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   <link rel="stylesheet" type="text/css" href="signup.css">
   <link rel="stylesheet" href="bootstrap.min.css">
   <script src="script.js"></script>
+  <script src="font-awesome.min.js"></script>
 </head>
 <body>
   <div class="form">
