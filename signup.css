@@ -21,7 +21,7 @@ body
 .param
 {
   display: table;
-  margin: 0 auto;
+  margin-left: 50px;
   padding-bottom: 20px;
 }
 .sbmt
@@ -34,4 +34,8 @@ body
 {
   padding-top: 20px;
   padding-bottom: 13px;
+}
+.fas.fa-times-hexagon {
+    color: red;
+    margin-left: 13px;
 }
