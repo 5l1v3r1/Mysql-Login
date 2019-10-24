@@ -35,3 +35,7 @@ body
   padding-top: 30px;
   padding-bottom: 20px;
 }
+.btn.btn-light {
+  width: 215px;
+  height: 38px;
+}

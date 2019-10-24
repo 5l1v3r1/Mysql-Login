@@ -40,14 +40,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   <meta name="keywords" content="Choudhary Abdullah">
   <meta name="theme-color" content="#fff">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign Up</title>
+  <title>Reset Password</title>
   <link rel="stylesheet" type="text/css" href="reset-password.css">
   <link rel="stylesheet" href="bootstrap.min.css">
 </head>
 <body>
   <div class="form">
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-      <div class="heading"><h3>Reset Password</h3></div>
+      <div class="heading"><h3>Reset</h3></div>
       <div class="param"><input type="text" name="username" autocomplete="off" placeholder="Username" class="btn btn-light"></div>
       <div class="param"><input type="password" name="password" autocomplete="off" placeholder="New Password" class="btn btn-light"></div>
       <div class="sbmt"><input type="submit" class="btn btn-success"></div>
