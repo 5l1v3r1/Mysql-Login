@@ -10,7 +10,7 @@ alert("Fill All Fields");
 var username1 = document.getElementById("password");
 var password1 = document.getElementById("rpassword");
 //Check All Values/Informations Filled by User are Valid Or Not.If All Fields Are invalid Then Generate alert.
-if (password1.innerHTML == '<i class="fas fa-times-hexagon"></i>' || rpassword1.innerHTML == '<i class="fas fa-times-hexagon"></i>') {
+if (password1.innerHTML == '<i class="fas fa-times-hexagon" aria-hidden="true"></i>' || rpassword1.innerHTML == '<i class="fas fa-times-hexagon" aria-hidden="true"></i>') {
 alert("Fill Valid Information");
 } else {
 //Submit Form When All values are valid.

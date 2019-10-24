@@ -6,7 +6,7 @@ $formfield = $_GET['field'];
 if ($formfield == "name") {
 if (strlen($value) > 0 && !preg_match("/^([a-zA-Z' ]+)$/", $value)) {
 echo <<<IOK1
-<i class="fas fa-times-hexagon"></i>
+<i class="fas fa-times-hexagon" aria-hidden="true"></i>
 IOK1;
 }
 }
@@ -17,12 +17,12 @@ $result = mysqli_query($conn, $query);
 $row = $result->fetch_assoc();
 if (strlen($value) > 0 && !preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $value)) {
 echo <<<IOK2
-<i class="fas fa-times-hexagon"></i>
+<i class="fas fa-times-hexagon" aria-hidden="true"></i>
 IOK2;
 }
 else if (is_numeric($row["id"])) {
 echo <<<IOK3
-<i class="fas fa-times-hexagon"></i>
+<i class="fas fa-times-hexagon" aria-hidden="true"></i>
 IOK3;
 }
 }
@@ -33,7 +33,7 @@ $result = mysqli_query($conn, $query);
 $row = $result->fetch_assoc();
 if (strlen($value) > 0 && is_numeric($row["id"])) {
 echo <<<IOK4
-<i class="fas fa-times-hexagon"></i>
+<i class="fas fa-times-hexagon" aria-hidden="true"></i>
 IOK4;
 }
 }
@@ -41,14 +41,14 @@ IOK4;
 if ($formfield == "password") {
 if (strlen($value) > 0 && strlen($value) < 8) {
 echo <<<IOK5
-<i class="fas fa-times-hexagon"></i>
+<i class="fas fa-times-hexagon" aria-hidden="true"></i>
 IOK5;
 }
 }
 if ($formfield == "rpassword") {
 if (strlen($value) > 0 && strlen($value) < 8) {
 echo <<<IOK6
-<i class="fas fa-times-hexagon"></i>
+<i class="fas fa-times-hexagon" aria-hidden="true"></i>
 IOK6;
 }
 }
