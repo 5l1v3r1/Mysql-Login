@@ -45,4 +45,12 @@ echo <<<IOK5
 IOK5;
 }
 }
+if ($formfield == "rpassword") {
+if (strlen($value) > 0 && strlen($value) < 8) {
+echo <<<IOK6
+<i class="fas fa-times-hexagon"></i>
+IOK6;
+}
+}
+
 ?>

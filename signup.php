@@ -29,7 +29,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   <title>Sign Up</title>
   <link rel="stylesheet" type="text/css" href="signup.css">
   <link rel="stylesheet" href="bootstrap.min.css">
-  <script src="script.js"></script>
+  <script src="signup.js"></script>
   <script src="font-awesome.min.js"></script>
 </head>
 <body>
