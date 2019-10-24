@@ -11,20 +11,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 {
   $username = mysqli_real_escape_string($conn, trim($_POST["username"]));
   $password = md5(mysqli_real_escape_string($conn, trim($_POST["password"])));
-  $query = "SELECT id FROM users WHERE username = '$username'";
-  $result = mysqli_query($conn, $query);
-  $row = $result->fetch_assoc();
-  $id = $row["id"];
-  if ($username == $_SESSION["username"])
+  $password1 = md5(mysqli_real_escape_string($conn, trim($_POST["password1"])));
+  if ($password == $password1)
   {
-    $query = "UPDATE users SET password = '$password' WHERE id = '$id'";
+    $query = "SELECT id FROM users WHERE username = '$username'";
     $result = mysqli_query($conn, $query);
-    if (!$result) die("Fatal Error");
-    else
+    $row = $result->fetch_assoc();
+    $id = $row["id"];
+    if ($username == $_SESSION["username"])
     {
-      session_destroy();
-      header("location: index.php");
-      exit();
+      $query = "UPDATE users SET password = '$password' WHERE id = '$id'";
+      $result = mysqli_query($conn, $query);
+      if (!$result) die("Fatal Error");
+      else
+      {
+        session_destroy();
+        header("location: index.php");
+        exit();
+      }
     }
   }
    mysqli_close($conn);
@@ -36,7 +40,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 <head>
   <meta charset="utf-8">
   <meta name="author" content="Choudhary Abdullah">
-  <meta name="description" content="Sign Up">
+  <meta name="description" content="Reset Password">
   <meta name="keywords" content="Choudhary Abdullah">
   <meta name="theme-color" content="#fff">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,6 +54,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
       <div class="heading"><h3>Reset</h3></div>
       <div class="param"><input type="text" name="username" autocomplete="off" placeholder="Username" class="btn btn-light"></div>
       <div class="param"><input type="password" name="password" autocomplete="off" placeholder="New Password" class="btn btn-light"></div>
+      <div class="param"><input type="password" name="password1" autocomplete="off" placeholder="Retype Password" class="btn btn-light"></div>
       <div class="sbmt"><input type="submit" class="btn btn-success"></div>
     </form>
 </body>
